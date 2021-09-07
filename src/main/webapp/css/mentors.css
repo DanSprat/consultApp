@@ -1,0 +1,31 @@
+.mentors-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    margin-top: 25px;
+    border: #CECECE solid 1px;
+    padding-bottom: 20px;
+    background: white;
+
+}
+.mentor{
+    text-align: center;
+    max-width: 300px;
+    min-width: 250px;
+    flex: 1 1 25%;
+    margin-left: 50px;
+    margin-top: 25px;
+
+}
+.main-container{
+
+}
+.img-photo{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px 2px #b5b5b5;
+
+}

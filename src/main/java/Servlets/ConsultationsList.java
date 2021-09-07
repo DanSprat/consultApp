@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
-
+@Deprecated
 @WebServlet("/schedule/list")
 public class ConsultationsList extends HttpServlet {
     public static final String ALL = "ALL";

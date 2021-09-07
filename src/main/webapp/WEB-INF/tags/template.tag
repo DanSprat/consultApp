@@ -4,23 +4,41 @@
 <!doctype html>
 <html>
 <head>
-    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="/css/font-main.css" rel="stylesheet" id="template-css">
     <jsp:invoke fragment="title"/>
+    <link href="/css/template.css" rel="stylesheet" id="template-css">
+
 </head>
 <body>
 <div class="container">
     <%-- меню --%>
     <nav class="nav h5">
-        <a class="nav-link" href="settings-view">Настройки</a>
+        <c:if test="${is_mentor == true}">
+            <a class="nav-link" href="${pageContext.request.contextPath}/settings/view">Настройки</a>
+        </c:if>
         <c:if test="${login == null}">
             <a class="nav-link" href="login">Войти</a>
         </c:if>
-    </nav>
+        <c:if test="${login!=null}">
+            <c:if test="${name !=null}">
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/view?login=${login}">${name}</a>
+            </c:if>
+            <c:if test="${name == null || name.length()==0}">
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/view?login=${login}">${login}</a>
+            </c:if>
+            <a class="nav-link" href=${pageContext.request.contextPath}/consults/my>Мои консультации</a>
+            <a class="nav-link" href=${pageContext.request.contextPath}/mentors?mode=consults>Запись на консультацию</a>
+            <a class="nav-link" href=${pageContext.request.contextPath}/mentors?mode=schedule>Расписание</a>
+        </c:if>
 
+    </nav>
     <br>
-    <jsp:doBody/>
+</div>
+<div class="main-container">
+<jsp:doBody/>
 </div>
 </body>
 </html>

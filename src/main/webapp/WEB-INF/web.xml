@@ -8,4 +8,71 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         id="YourWebAppID"
         version="2.5">
+    <listener>
+        <listener-class>Listeners.InitListener</listener-class>
+    </listener>
+   <filter>
+       <filter-name>AuthFilter</filter-name>
+       <filter-class>Filters.AuthFilter</filter-class>
+   </filter>
+
+    <filter>
+        <filter-name>MentorFilter</filter-name>
+        <filter-class>Filters.MentorFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AccessEdit</filter-name>
+        <filter-class>Filters.AccessEdit</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/settings/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/mentors/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/consults/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/schedule/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/user/view</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/user/edit</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AccessEdit</filter-name>
+        <url-pattern>/user/chgpwd</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AccessEdit</filter-name>
+        <url-pattern>/user/edit</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>MentorFilter</filter-name>
+        <url-pattern>/settings/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>MentorFilter</filter-name>
+        <url-pattern>/schedule/*</url-pattern>
+    </filter-mapping>
+
+
 </web-app>
+

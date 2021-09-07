@@ -1,0 +1,11 @@
+.add-container{
+    margin-top: 25px;
+    border: #CECECE solid 1px;
+    background: white;
+    padding: 15px 32px 20px;
+    min-width: 400px;
+
+}
+label{
+    font-family: "Roboto Text Medium";
+}

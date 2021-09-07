@@ -20,8 +20,6 @@ public class SettingsViewServlet extends HttpServlet {
                 new ArrayList<>(DataBase.INSTANCE.settings.getAll());
         settings.sort(Comparator.comparing(o -> o.name));
         req.setAttribute("settings",settings);
-        req.setAttribute("name","name");
         req.getRequestDispatcher("/settings-view.jsp").forward(req,resp);
-        //req.getRequestDispatcher("/settings-view.jsp").forward(req,resp);
     }
 }

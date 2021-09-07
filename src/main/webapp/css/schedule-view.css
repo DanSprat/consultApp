@@ -1,0 +1,65 @@
+.schedule-container{
+    margin-top: 25px;
+    border: #CECECE solid 1px;
+    background: white;
+    padding: 15px 32px 20px;
+    min-width: 400px;
+
+}
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-collapse: collapse;
+    background-color: #DCE7EF;
+}
+.table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 2px solid black;
+}
+.table td {
+    border: 2px solid black;
+    height: 80px;
+    padding: 0px;
+    padding-left: 13px;
+}
+.main-td{
+    background: #efefef;
+    width: 200px;
+    font-family: "Roboto Text Medium";
+    font-size: 22px;
+
+    vertical-align:middle !important;
+
+}
+.time {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    border: 2px solid black;
+    width: 140px;
+    height: 54px;
+    text-align: center;
+    line-height: 50px;
+    display: inline-block;
+    font-size: 22px;
+    margin-right: 20px;
+    color: black;
+   font-family: "Roboto Text Regular";
+    background-color: white;
+    text-decoration: none
+}
+.time:hover{
+    text-decoration: none;
+    color: black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.55);
+}
+
+
+.float-right {
+    margin-bottom: 10px;
+}
+.day-of-week{
+
+}

@@ -1,0 +1,17 @@
+.container_info {
+    padding-top: 15px;
+    margin-top: 25px;
+    border: #CECECE solid 1px;
+    padding-bottom: 20px;
+    background: white;
+
+}
+
+.elem {
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+}
+.form-control {
+    font-size: 14px;
+}

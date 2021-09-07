@@ -1,0 +1,41 @@
+.info_container{
+    margin-top: 25px;
+    border: #CECECE solid 1px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+}
+
+.elem{
+    margin: 5px;
+    font-size: 14px;
+
+}
+.main{
+    font-weight: bold;
+}
+.edit-btn{
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.info {
+    flex: 1;
+}
+.buttons {
+    margin-right: 10px;
+}
+.buttons * {
+    margin-bottom: 5px;
+    border-color: transparent;
+    color: #0E71EB;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+.edit-btn {
+
+}
+.change-pwd {
+
+}

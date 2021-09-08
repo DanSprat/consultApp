@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.User;
 
 import DB.DataBase;
 

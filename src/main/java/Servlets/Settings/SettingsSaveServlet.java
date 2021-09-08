@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Settings;
 
 import DB.DataBase;
 

@@ -1,4 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta');
+@import url('https://fonts.googleapis.com/css?family=Damion|Muli:400,600');
+@font-face {
+    font-family: 'Roboto Text Regular';
+    src: url("/fonts/Roboto/Roboto-Regular.ttf")
+}
+@font-face {
+    font-family: 'Roboto Text Medium';
+    src: url("/fonts/Roboto/Roboto-Medium.ttf");
+}
+@font-face {
+    font-family: 'Roboto Text Bold';
+    src: url("/fonts/Roboto/Roboto-Bold.ttf");
+}
+.container-consultations{
+    font-family: "Roboto Text Regular";
+}
+
+
 body{
     font-family: 'Mukta', sans-serif;
     height:100vh;
@@ -56,7 +74,7 @@ a{
     font-size: 18px;
 }
 .login-info-box{
-    width:30%;
+    width:35%;
     padding:0 50px;
     top:20%;
     left:0;
@@ -64,7 +82,7 @@ a{
     text-align:left;
 }
 .register-info-box{
-    width:30%;
+    width:35%;
     padding:0 50px;
     top:20%;
     right:0;
@@ -150,6 +168,23 @@ a{
 a{
     text-decoration:none;
     color:#2c7715;
+}
+#indicator {
+    height: 3px;
+    transition: 1s;
+}
+#indicator_text{
+    font-family: "Roboto Text Regular";
+    font-size: 14px;
+    height: 21px;
+    transition: .5s;
+}
+.under-submit{
+    font-family: "Roboto Text Regular";
+    font-size: 14px;
+    height: 21px;
+    margin-top: -15px;
+    margin-bottom: 5px;
 }
 
 

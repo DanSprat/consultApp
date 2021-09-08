@@ -73,6 +73,5 @@
         <url-pattern>/schedule/*</url-pattern>
     </filter-mapping>
 
-
 </web-app>
 

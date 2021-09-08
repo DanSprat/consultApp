@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Schedule;
 
 import DB.DataBase;
 import date.DateFormat;

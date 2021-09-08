@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Consults;
 
 import DB.DataBase;
 

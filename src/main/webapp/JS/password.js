@@ -6,9 +6,16 @@ var symbols = new RegExp("[!?.,/<>#№@()^:;]");
 $('input#register-password').on("keyup", function() {
    var text = $("#register-password").val();
    if (text.length == 0 ){
-       $('#indicator').text("");
+       $('#indicator').css({"backgroundColor": "white","width":"0%"});
+       $('#indicator_text').text("");
        return;
    }
+    if (text.length <8 ){
+        $('#indicator').css({"backgroundColor": "white","width":"0%"});
+        $('#indicator_text').text("Длина пароля должна быть больше 8 символов");
+
+        return;
+    }
 
    var is_SL = false;
    var is_LL = false;
@@ -35,22 +42,48 @@ $('input#register-password').on("keyup", function() {
    if (is_SL) count++;
 
 
-    $('#indicator').text("Слабо");
     if (count === 0){
-        $('#indicator').text("Слабо");
+        $('#indicator').css({"backgroundColor": "white","width":"0%"});
+
     }
     if (count === 1){
-        $('#indicator').text("Все еще слабо");
+        $('#indicator').css({"backgroundColor": "red","width":"25%"});
+        $('#indicator_text').text("Сложность пароля: Слишком слабый");
+
     }
     if (count === 2){
-        $('#indicator').text("Нормально");
+        $('#indicator').css({"backgroundColor": "orange","width":"50%"});
+        $('#indicator_text').text("Сложность пароля: Слабый");
+
     }
     if (count === 3){
-        $('#indicator').text("Хорошо");
+        $('#indicator').css({"backgroundColor": "yellow","width":"75%"});
+        $('#indicator_text').text("Сложность пароля: Нормальный");
     }
     if (count === 4){
-        $('#indicator').text("Сильно");
+        $('#indicator').css({"backgroundColor": "green","width":"100%"});
+        $('#indicator_text').text("Сложность пароля: Хороший");
+        $(`#register-password`).attr("is","true");
     }
    // $(`#log-in-from`).submit();
 
 });
+
+$(`#register-confirm`).on("keyup",function () {
+
+    var attr = $(`#register-password`).attr("is");
+    if (attr == "true"){
+        var password = $(`#register-confirm`).val();
+        var confirm = $('#register-password').val();
+        if (confirm == password){
+            $(`.under-submit`).css({"color":"green"});
+            $(`.under-submit`).text("Пароли совпадают");
+        } else {
+            $(`.under-submit`).css({"color":"red"});
+            $(`.under-submit`).text("Пароли  не совпадают");
+        }
+    }
+
+
+
+})

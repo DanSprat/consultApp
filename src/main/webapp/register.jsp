@@ -11,15 +11,15 @@
 <body>
 <div class="login-reg-panel">
   <div class="login-info-box">
-    <h2>Have an account?</h2>
-    <p>Lorem ipsum dolor sit amet</p>
+    <h2>У вас есть аккаунт?</h2>
+    <p>Войдите прямо сейчас</p>
     <label id="label-register" for="log-reg-show">Login</label>
     <input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
   </div>
 
   <div class="register-info-box">
-    <h2>Don't have an account?</h2>
-    <p>Lorem ipsum dolor sit amet</p>
+    <h2>Еще не зарегестрированы?</h2>
+    <p>Пора это исправить</p>
     <label id="label-login" for="log-login-show">Register</label>
     <input type="radio" name="active-log-panel" id="log-login-show">
   </div>
@@ -41,8 +41,10 @@
         <input type="text" id = "register-login" name="login" placeholder="Email">
         <input type="password" id = "register-password" name="password" placeholder="Password">
         <div id ="indicator"></div>
+        <div id ="indicator_text"></div>
         <input type="password" id = "register-confirm" name ="confirmPassword" placeholder="Confirm Password">
-        <input type="submit" value="Register">
+        <div class="under-submit"></div>
+        <input type="submit" id = "register_submit" value="Register">
       </form>
     </div>
   </div>

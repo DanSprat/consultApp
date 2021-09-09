@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="ru">
 <html>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -50,6 +51,6 @@
   </div>
 </div>
 </body>
-<script src="/JS/register.js"></script>
-<script src="/JS/password.js"></script>
+<script  src="/JS/register.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/JS/password.js" charset="utf-8"></script>
 </html>

@@ -73,7 +73,6 @@ public class InitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Попал в этот блок");
         ThreadInit.getInstance().start();
     }
 

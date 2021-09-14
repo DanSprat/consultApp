@@ -1,4 +1,4 @@
-var path =  "http://localhost:8888/getLogin";
+var path =  "http://34.116.203.124:8888/getLogin";
 function CreateRequest()
 {
     var Request = false;

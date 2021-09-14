@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.nio.file.Path;
+
 
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Path path = Path.of(DataBase.DB_PATH).toAbsolutePath();
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         HttpSession session = req.getSession();
@@ -36,9 +35,10 @@ public class AuthServlet extends HttpServlet {
             try {
                 interval = Integer.parseInt(record.value);
             } catch (NumberFormatException exception){
-
+                exception.printStackTrace();
             }
         }
+        req.getSession().setMaxInactiveInterval(interval);
         String target = (String) session.getAttribute("targetURL");
         if (target == null){
             target ="/";

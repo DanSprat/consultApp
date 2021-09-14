@@ -34,16 +34,16 @@ public class InitListener implements ServletContextListener {
         @Override
         public void run() {
             ZonedDateTime currentZDT;
-            int currentDay= ZonedDateTime.now(ZoneId.systemDefault()).getDayOfMonth();
+            int currentDay= ZonedDateTime.now(ZoneId.of("Europe/Moscow")).getDayOfMonth();
             int nextDay;
             long currentMillis;
             boolean is = false;
             while (!interrupted()){
-                currentZDT =  ZonedDateTime.now(ZoneId.systemDefault());
+                currentZDT =  ZonedDateTime.now(ZoneId.of("Europe/Moscow"));
                 nextDay = currentZDT.getDayOfMonth();
                 if (nextDay != currentDay){
                     currentDay = nextDay;
-                    currentZDT = ZonedDateTime.of(currentZDT.getYear(),currentZDT.getMonthValue(),currentZDT.getDayOfMonth(), currentZDT.getHour(), currentZDT.getMinute(),0,0,ZoneId.systemDefault());
+                    currentZDT = ZonedDateTime.of(currentZDT.getYear(),currentZDT.getMonthValue(),currentZDT.getDayOfMonth(), currentZDT.getHour(), currentZDT.getMinute(),0,0,ZoneId.of("Europe/Moscow"));
                     currentMillis = currentZDT.toInstant().toEpochMilli();
                     List<DataBase.Schedule.Value> scheduleList = INSTANCE.schedule.getAll();
                     List<DataBase.Consultations.Consultation> consultationList = INSTANCE.consultations.getAll();

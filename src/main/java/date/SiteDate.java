@@ -27,7 +27,7 @@ public class SiteDate implements Comparable <SiteDate>{
     }
 
     public SiteDate(long millis){
-        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis),ZoneId.systemDefault());
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis),ZoneId.of("Europe/Moscow"));
         dayOfWeek = zonedDateTime.getDayOfWeek().getValue();
         day = zonedDateTime.getDayOfMonth();
         month = zonedDateTime.getMonthValue();
@@ -38,7 +38,7 @@ public class SiteDate implements Comparable <SiteDate>{
     }
 
     public void setDate(long millis){
-        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault());
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.of("Europe/Moscow"));
         dayOfWeek = zonedDateTime.getDayOfWeek().getValue();
         day =  zonedDateTime.getDayOfMonth();
         month = zonedDateTime.getMonthValue();

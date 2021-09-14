@@ -4,7 +4,7 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Расписание</title>
-        <link href="/css/schedule-view.css" rel="stylesheet">
+        <style><%@include file="/css/schedule-view.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">

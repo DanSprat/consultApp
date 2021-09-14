@@ -7,6 +7,7 @@
     <jsp:attribute name="title">
         <title>Информация о пользователе</title>
         <link href="/css/user-view.css" rel="stylesheet" id=user-view-css">
+        <style><%@include file="/css/user-view.css"%></style>
     </jsp:attribute>
 
     <jsp:body>
@@ -14,6 +15,11 @@
             Информация о пользователе
         </p>
         <div class="info_container">
+            <c:set var="image" value="/images/NO_PHOTO.jpg" scope="page"/>
+            <c:if test="${user.image != null && user.image.length()>0}">
+                <c:set var="image" value="${user.image}" scope="page"/>
+            </c:if>
+            <img src="${image}" class="user-image">
             <div class ="info">
                <div class="elem col-md-3">
                    <div class="main">Логин</div>

@@ -21,8 +21,12 @@ public class ScheduleSaveServlet extends HttpServlet {
         String dayOfWeek = req.getParameter("dayofweek");
         String start = req.getParameter("start");
 
-        if (mode ==null || time == null || mentor == null || duration == null || dayOfWeek == null){
-            resp.getWriter().println("Error");
+        if (time == null || mentor == null || duration == null || dayOfWeek == null){
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
         }
         String [] times = time.split(":");
         long millis= Long.parseLong(times[0])*60*60*1000 + Long.parseLong(times[1])*60*1000;
@@ -33,7 +37,10 @@ public class ScheduleSaveServlet extends HttpServlet {
             DataBase.Schedule.Key key = new DataBase.Schedule.Key(mentor,Integer.parseInt(dayOfWeek),Long.parseLong(start));
             DataBase.Schedule.Value value = DataBase.INSTANCE.schedule.remove(key);
             if (value == null){
-                resp.getWriter().println("Element not found");
+                req.setAttribute("message", "Объект не найден");
+                req.setAttribute("action","/");
+                req.setAttribute("name_button","На главную");
+                req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
                 return;
             }
         }

@@ -4,7 +4,7 @@
 <t:template>
      <jsp:attribute name="title">
     <title>Редактирование профиля</title>
-         <link href="/css/change-pwd.css" rel="stylesheet" id=user-view-css">
+         <style><%@include file="/css/change-pwd.css"%></style>
   </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">

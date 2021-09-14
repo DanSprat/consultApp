@@ -22,7 +22,19 @@ public class ConsultsViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String mentorLogin = req.getParameter("mentor");
+        if (mentorLogin == null) {
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+        }
         DataBase.Users.User mentor = DataBase.INSTANCE.users.findKey(mentorLogin);
+        if (mentor == null) {
+            req.setAttribute("message", "Пользователь не найден");
+            req.setAttribute("action","/mentors");
+            req.setAttribute("name_button","К выбору наставника");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+        }
         List<DataBase.Consultations.Consultation> consultations = DataBase.INSTANCE.consultations.select(o->o.mentor.equals(mentorLogin), (Comparator.comparingLong(o -> o.start)));
         ZonedDateTime zonedDateTime;
         SiteDate siteDate;

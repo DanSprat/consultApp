@@ -22,7 +22,11 @@ public class ScheduleViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String mentor = req.getParameter("mentor");
         if (mentor == null){
-            resp.getWriter().println("Error");
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
         }
         List <DataBase.Schedule.Value> schedule = DataBase.INSTANCE.schedule.select((o)->o.mentor.equals(mentor),Comparator.comparing(o->o.start));
         DayOfWeek [] dayOfWeeks = DayOfWeek.values();

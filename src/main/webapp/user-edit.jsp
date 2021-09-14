@@ -3,15 +3,18 @@
 <t:template>
   <jsp:attribute name="title">
     <title>Редактирование профиля</title>
-     <link href="/css/user-edit.css" rel="stylesheet" id=user-view-css">
+     <link type="text/css" href="/css/user-edit.css" rel="stylesheet" id=user-edit-css">
+    <style><%@include file="/css/user-edit.css"%></style>
+    <link rel="stylesheet" href="https://unpkg.com/jcrop/dist/jcrop.css">
   </jsp:attribute>
 
   <jsp:body>
     <p class="h1 ml-5 text-secondary">
       Редактирование профиля
     </p>
-    <div class="container_info">
-      <form action="/user/save"  method="post">
+
+    <div class="container_info" >
+      <form action="/user/save"  method="post" enctype="multipart/form-data">
         <div class="form-group row elem">
           <div class="col-md-3  ">
             Имя и Фамилия
@@ -48,16 +51,20 @@
             <input type="text" name="discord"  class="form-control" value ="${user.discordName}" >
           </div>
         </div>
+        <div class="form-group row elem photo">
+          <div class="col-md-3">
+            <label for="file">Загрузить фото</label>
+            <input type="file" name="file" class="form-control-file" id="file">
+          </div>
+        </div>
         <div class="form-group row elem">
           <div class="col-md-3">
             <input type="text" name="mode" value="edit" hidden>
             <input type="submit" class="btn btn-primary mt-2" value="Обновить">
           </div>
         </div>
-
-
       </form>
     </div>
-
   </jsp:body>
+
 </t:template>

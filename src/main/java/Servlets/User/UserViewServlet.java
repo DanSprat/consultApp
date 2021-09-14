@@ -25,7 +25,10 @@ public class UserViewServlet extends HttpServlet {
         }
         DataBase.Users.User user = DataBase.INSTANCE.users.findKey(login);
         if (user== null){
-            resp.getWriter().println("ERROR");
+            req.setAttribute("message", "Пользователь не найден");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
             return;
         }
         req.setAttribute("user",user);

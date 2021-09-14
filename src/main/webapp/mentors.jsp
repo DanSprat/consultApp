@@ -4,19 +4,19 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Выбор наставника</title>
-          <link href="/css/mentors.css" rel="stylesheet" id=user-view-css">
+        <style><%@include file="/css/mentors.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">
             Выбор ментора
         </p>
-        <c:set var="image" value="images/unnamed.jpg" scope="page"/>
+        <c:set var="image" value="images/NO_PHOTO.jpg" scope="page"/>
         <c:if test="${elem.image != null && elem.image.length()>0}">
             <c:set var="image" value="${elem.image}" scope="page"/>
         </c:if>
         <div class="mentors-container">
         <c:forEach var="elem" items="${mentors}">
-            <c:set var="image" value="images/unnamed.jpg" scope="page"/>
+            <c:set var="image" value="images/NO_PHOTO.jpg" scope="page"/>
             <c:if test="${elem.image != null && elem.image.length()>0}">
                 <c:set var="image" value="${elem.image}" scope="page"/>
             </c:if>

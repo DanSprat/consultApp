@@ -16,10 +16,21 @@ public class SettingsSaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String value = req.getParameter("value");
+        if (name == null || value == null){
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
+        }
         String edit = req.getParameter("edit");
         if ("true".equals(edit)){
             if (DataBase.INSTANCE.settings.remove(name) == null){
-                resp.getWriter().println("Ошибка, параметра не существует");
+                req.setAttribute("message", "Настройка не найдена");
+                req.setAttribute("action","/");
+                req.setAttribute("name_button","На главную");
+                req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+                return;
             }
         }
         DataBase.Settings.Record record = new DataBase.Settings.Record(name,value);

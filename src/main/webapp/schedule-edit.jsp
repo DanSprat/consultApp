@@ -4,7 +4,7 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Редактирование элемента расписания</title>
-        <link href="/css/schedule-edit.css" rel="stylesheet">
+        <style><%@include file="/css/schedule-edit.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">
@@ -19,14 +19,14 @@
                     </div>
                     <div class="form-group  col-2">
                         <label for="exampleFormControlSelect1">День недели</label>
-                        <select name = "dayofweek" class="form-control"  id="exampleFormControlSelect1">
-                            <option value="1">Понедельник</option>
-                            <option value="2">Вторник</option>
-                            <option value="3">Среда</option>
-                            <option value="4">Четверг</option>
-                            <option value="5">Пятница</option>
-                            <option value="6">Пятница</option>
-                            <option value="0">Воскресенье</option>
+                        <select name = "dayofweek" class="form-control" value="${schedule.day_of_week}"  id="exampleFormControlSelect1">
+                            <option value="1" <c:if test="${schedule.day_of_week == 1}">selected="selected"</c:if>>Понедельник</option>
+                            <option value="2" <c:if test="${schedule.day_of_week == 2}">selected="selected"</c:if>>Вторник</option>
+                            <option value="3" <c:if test="${schedule.day_of_week == 3}">selected="selected"</c:if>>Среда</option>
+                            <option value="4"<c:if test="${schedule.day_of_week == 4}">selected="selected"</c:if>>Четверг</option>
+                            <option value="5" <c:if test="${schedule.day_of_week == 5}">selected="selected"</c:if>>Пятница</option>
+                            <option value="6"<c:if test="${schedule.day_of_week == 6}">selected="selected"</c:if>>Пятница</option>
+                            <option value="0"<c:if test="${schedule.day_of_week == 0}">selected="selected"</c:if>>Воскресенье</option>
                         </select>
                     </div>
                 </div>

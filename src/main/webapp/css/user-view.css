@@ -39,3 +39,11 @@
 .change-pwd {
 
 }
+.user-image {
+    height: 150px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 15px;
+    border: 1px solid #b5b5b5;
+}

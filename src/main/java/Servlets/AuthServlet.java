@@ -9,17 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.nio.file.Path;
 
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Path path = Path.of(DataBase.DB_PATH).toAbsolutePath();
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         HttpSession session = req.getSession();
         DataBase.Users.User user = DataBase.INSTANCE.users.findKey(login);
         if (user == null || !user.password.equals(password)){
-            resp.getWriter().println("Ошибка");
+            req.setAttribute("message", "Пользователь не найден");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("error-page.jsp").forward(req,resp);
             return;
         }
         session.setAttribute("login",login);

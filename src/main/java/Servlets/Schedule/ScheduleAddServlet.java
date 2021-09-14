@@ -16,15 +16,25 @@ public class ScheduleAddServlet extends HttpServlet {
         String login = (String) req.getSession().getAttribute("login");
         DataBase.Users.User user = DataBase.INSTANCE.users.findKey(login);
         if (!user.is_mentor){
-            resp.getWriter().println("not enough rights");
+            req.setAttribute("message", "Недостаточно прав");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
         }
         String mentor = req.getParameter("mentor");
         if (mentor != null){
             req.setAttribute("mentor",mentor);
+        } else  {
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
         }
         DataBase.Settings.Record record = DataBase.INSTANCE.settings.findKey("CONSULT_DURATION");
         if (record != null){
-            req.setAttribute("duration",Integer.parseInt(record.value) / 1000 / 60 + " минут");
+            req.setAttribute("duration",Integer.parseInt(record.value) / 1000 / 60 );
         }
         req.getRequestDispatcher("/schedule-add.jsp").forward(req,resp);
 

@@ -17,11 +17,17 @@ public class DeleteSettingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<String> params = Collections.list(req.getParameterNames());
         if (params.size()!= 1){
-            resp.getWriter().println("Беда");
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
             return;
         }
         if (DataBase.INSTANCE.settings.remove(params.get(0)) == null){
-            resp.getWriter().println("Беда");
+            req.setAttribute("message", "Объект не найден");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
             return;
         }
         resp.sendRedirect(req.getContextPath()+"/settings/view");

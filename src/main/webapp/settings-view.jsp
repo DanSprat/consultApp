@@ -5,9 +5,8 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Настройки</title>
-        <link href="${pageContext.request.contextPath}/css/settings-view.css" rel="stylesheet" id="consult-app-css">
-        <link href="${pageContext.request.contextPath}/css/test.css" rel="stylesheet" id="consult-app-css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <style><%@include file="/css/settings-view.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">

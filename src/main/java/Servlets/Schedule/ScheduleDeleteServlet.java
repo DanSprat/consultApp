@@ -17,7 +17,10 @@ public class ScheduleDeleteServlet extends HttpServlet {
         String mentor = req.getParameter("mentor");
         String dayOfWeek = req.getParameter("dayofweek");
         if (start == null || mentor == null || dayOfWeek == null){
-            resp.getWriter().println("Error");
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
             return;
         }
         DataBase.Schedule.Key key = new DataBase.Schedule.Key(mentor,Integer.parseInt(dayOfWeek),Long.parseLong(start));

@@ -18,19 +18,29 @@ public class ConsultationCancelServlet extends HttpServlet {
         String mentor = req.getParameter("mentor_login");
         String start = req.getParameter("start");
         if (mentor == null || start == null){
-            resp.getWriter().println("Error");
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("error-page.jsp").forward(req,resp);
             return;
         }
+
         String student =(String) req.getSession().getAttribute("login");
         DataBase.Consultations.Key key = new DataBase.Consultations.Key(mentor,Long.parseLong(start));
         DataBase.Consultations.Consultation consultation = DataBase.INSTANCE.consultations.remove(key);
         if (consultation == null || consultation.student == null){
-            resp.getWriter().println("Консультация не найдена");
+            req.setAttribute("message", "Консультация не найдена");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("error-page.jsp").forward(req,resp);
             return;
         }
 
         if(!consultation.student.equals(student)){
-            resp.getWriter().println("not enough rights");
+            req.setAttribute("message", "Недостаточно прав");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("error-page.jsp").forward(req,resp);
             return;
         }
         DataBase.INSTANCE.consultations.put(new DataBase.Consultations.Consultation(consultation.mentor,consultation.start,consultation.duration, null, ""));

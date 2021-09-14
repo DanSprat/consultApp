@@ -4,7 +4,7 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Добавление элемента в расписание</title>
-        <link href="/css/schedule-add.css" rel="stylesheet">
+        <style><%@include file="/css/schedule-add.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">

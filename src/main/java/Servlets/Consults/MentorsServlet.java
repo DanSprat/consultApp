@@ -20,7 +20,10 @@ public class MentorsServlet extends HttpServlet {
             req.setAttribute("mode","consults");
         } else {
             if (!mode.equals("consults") && !mode.equals("schedule")){
-                resp.getWriter().println("Error");
+                req.setAttribute("message", "Неверный формат запроса");
+                req.setAttribute("action","/");
+                req.setAttribute("name_button","На главную");
+                req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
                 return;
             }
             req.setAttribute("mode",mode);

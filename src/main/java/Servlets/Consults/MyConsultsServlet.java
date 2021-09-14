@@ -33,8 +33,11 @@ public class MyConsultsServlet extends HttpServlet {
                 req.setAttribute("datetime",new SiteDate(consultation.start));
                 req.getRequestDispatcher("/consultation-view.jsp").forward(req,resp);
             } else {
-                resp.setContentType("text/html");
-             resp.getWriter().println("Консультация не найдена");
+                req.setAttribute("message", "Консультация не найдена");
+                req.setAttribute("action","/consults/my");
+                req.setAttribute("name_button","Назад");
+                req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+                return;
             }
         } else {
             DataBase.Users.User user = DataBase.INSTANCE.users.findKey(login);

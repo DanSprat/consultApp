@@ -1,16 +1,16 @@
 <%@tag description="Template tag for consultapp" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="title" fragment="true" %>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="/css/font-main.css" rel="stylesheet" id="template-css">
     <jsp:invoke fragment="title"/>
-    <link href="/css/template.css" rel="stylesheet" id="template-css">
-
+    <style><%@include file="/css/template.css"%></style>
+    <style><%@include file="/css/font-main.css"%></style>
+    <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="container">
@@ -31,7 +31,10 @@
             </c:if>
             <a class="nav-link" href=${pageContext.request.contextPath}/consults/my>Мои консультации</a>
             <a class="nav-link" href=${pageContext.request.contextPath}/mentors?mode=consults>Запись на консультацию</a>
-            <a class="nav-link" href=${pageContext.request.contextPath}/mentors?mode=schedule>Расписание</a>
+            <c:if test="${is_mentor == true}">
+                <a class="nav-link" href=${pageContext.request.contextPath}/mentors?mode=schedule>Расписание</a>
+            </c:if>
+            <a class="nav-link" href="/logout">Выйти</a>
         </c:if>
 
     </nav>

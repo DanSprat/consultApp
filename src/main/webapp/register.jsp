@@ -29,7 +29,7 @@
     <div class="login-show">
       <h2>LOGIN</h2>
       <form id ="log-in-from" action="/auth" method="post">
-        <input type="text" id ="login-login"  name="login" placeholder="Email">
+        <input type="text" id ="login-login"  name="login" placeholder="Username">
         <input type="password" id = "login-password" name ="password" placeholder="Password">
         <input class="login-btn" type="submit" value="Login">
         <a href="">Forgot password?</a>
@@ -39,7 +39,7 @@
       <h2>REGISTER</h2>
       <form action="/user/save" method="post">
         <input type="text"  name="mode" value="add" hidden>
-        <input type="text" id = "register-login" name="login" placeholder="Email">
+        <input type="text" id = "register-login" name="login" placeholder="Username">
         <input type="password" id = "register-password" name="password" placeholder="Password">
         <div id ="indicator"></div>
         <div id ="indicator_text"></div>

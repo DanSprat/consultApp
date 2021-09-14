@@ -3,7 +3,9 @@ var level_1_arr = new Uint8Array([208,161,208,187,208,190,208,182,208,189,208,19
 var level_2_arr = new Uint8Array([208,161,208,187,208,190,208,182,208,189,208,190,209,129,209,130,209,140,32,208,191,208,176,209,128,208,190,208,187,209,143,58,32,208,157,208,190,209,128,208,188,208,176,208,187,209,140,208,189,209,139,208,185])
 var level_3_arr = new Uint8Array([208,161,208,187,208,190,208,182,208,189,208,190,209,129,209,130,209,140,32,208,191,208,176,209,128,208,190,208,187,209,143,58,32,208,165,208,190,209,128,208,190,209,136,208,184,208,185])
 var level_4_arr = new Uint8Array([208,161,208,187,208,190,208,182,208,189,208,190,209,129,209,130,209,140,32,208,191,208,176,209,128,208,190,208,187,209,143,58,32,208,158,209,130,208,187,208,184,209,135,208,189,209,139,208,185])
+var length_arr = new Uint8Array([208,148,208,187,208,184,208,189,208,176,32,208,191,208,176,209,128,208,190,208,187,209,143,32,208,180,208,190,208,187,208,182,208,189,208,176,32,208,177,209,139,209,130,209,140,32,208,177,208,190,208,187,209,140,209,136,208,181,32,56,32,209,129,208,184,208,188,208,178,208,190,208,187,208,190,208,178])
 
+let length = new TextDecoder().decode(length_arr);
 let level_0 = new TextDecoder().decode(level_0_arr);
 let level_1 = new TextDecoder().decode(level_1_arr);
 let level_2 = new TextDecoder().decode(level_2_arr);
@@ -24,7 +26,7 @@ $('input#register-password').on("keyup", function() {
    }
     if (text.length <8 ){
         $('#indicator').css({"backgroundColor": "white","width":"0%"});
-        $('#indicator_text').text("Длина пароля должна быть больше 8 символов");
+        $('#indicator_text').text(length);
 
         return;
     }
@@ -60,7 +62,6 @@ $('input#register-password').on("keyup", function() {
     if (count === 1){
         $('#indicator').css({"backgroundColor": "red","width":"40%"});
         $('#indicator_text').text(level_1);
-        alert(level_1);
 
     }
     if (count === 2){
@@ -105,9 +106,7 @@ $(`#register_submit`).on("click",function () {
     var is_pass = $(`#register-password`).attr("is");
     var is_confirm = $(`#register-confirm`).attr("is");
     if (is_pass && is_confirm){
-        alert("hello");
         return true;
     }
-    alert("hello");
     return false;
 });

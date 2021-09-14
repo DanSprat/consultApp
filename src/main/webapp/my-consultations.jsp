@@ -4,7 +4,7 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Мои консультации</title>
-        <link href="/css/my-consults.css" rel="stylesheet">
+        <style><%@include file="/css/my-consults.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">

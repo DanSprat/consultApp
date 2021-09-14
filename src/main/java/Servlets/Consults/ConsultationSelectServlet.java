@@ -21,11 +21,21 @@ public class ConsultationSelectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String mentor = req.getParameter("mentor");
         String time = req.getParameter("time");
-        if (mentor == null || time == null ) { resp.getWriter().println("Error"); }
+        if (mentor == null || time == null ) {
+            req.setAttribute("message", "Неверный формат запроса");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+        }
         DataBase.Consultations.Consultation consultation = DataBase.INSTANCE.consultations.findKey(new DataBase.Consultations.Key(mentor,Long.parseLong(time)));
-        if (consultation == null){resp.getWriter().println("Error"); }
+        if (consultation == null){
+            req.setAttribute("message", "Консультация не найдена");
+            req.setAttribute("action","/consults/my");
+            req.setAttribute("name_button","Назад");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
+        }
         req.setAttribute("consultation",consultation);
-
         DataBase.Users.User student = DataBase.INSTANCE.users.findKey((String) req.getSession().getAttribute("login"));
         DataBase.Users.User userMentor = DataBase.INSTANCE.users.findKey(mentor);
         req.setAttribute("mentor", userMentor);
@@ -47,7 +57,11 @@ public class ConsultationSelectServlet extends HttpServlet {
         DataBase.Consultations.Key key = new DataBase.Consultations.Key(mentor,start);
         DataBase.Consultations.Consultation consultation = DataBase.INSTANCE.consultations.remove(key);
         if (consultation == null){
-            resp.getWriter().println("Error");
+            req.setAttribute("message", "Консультация не найдена");
+            req.setAttribute("action","/consults/my");
+            req.setAttribute("name_button","Назад");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
+            return;
         }
         String studentLogin = (String) req.getSession().getAttribute("login");
         DataBase.Users.User student = DataBase.INSTANCE.users.findKey(studentLogin);
@@ -56,7 +70,10 @@ public class ConsultationSelectServlet extends HttpServlet {
         if (DataBase.INSTANCE.consultations.put(consultation)){
             resp.sendRedirect("/consults/my");
         } else {
-            resp.getWriter().println("Error");
+            req.setAttribute("message", "Не удалось провести операцию");
+            req.setAttribute("action","/");
+            req.setAttribute("name_button","На главную");
+            req.getRequestDispatcher("/error-page.jsp").forward(req,resp);
         }
     }
 }

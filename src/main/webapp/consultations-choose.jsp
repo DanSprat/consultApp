@@ -4,7 +4,7 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Выбор консультации</title>
-        <link href="/css/consultations-choose.css" rel="stylesheet" id="login-css">
+        <style><%@include file="/css/consultations-choose.css"%></style>
     </jsp:attribute>
     <jsp:body>
         <p class="h1 ml-5 text-secondary">
@@ -12,11 +12,11 @@
         </p>
         <div class="container-consultations">
             <div class="mentor">
-                <c:set var="image" value="images/unnamed.jpg" scope="page"/>
+                <c:set var="image" value="images/NO_PHOTO.jpg" scope="page"/>
                 <c:if test="${mentor.image != null && mentor.image.length()>0}">
                     <c:set var="image" value="${mentor.image}" scope="page"/>
                 </c:if>
-                <img src="/${image}" class="mentor-image">
+                <img src="${image}" class="mentor-image">
                 <div class="mentor-name">
                     <c:out value="${mentor.name}"/>
                 </div>
@@ -47,6 +47,7 @@
 
                 </div>
             </c:forEach>
+                </div>
             </div>
         </c:forEach>
         <div id="text"><div>

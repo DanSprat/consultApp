@@ -11,7 +11,6 @@ body {
 }
 
 a {
-    color: #92badd;
     display:inline-block;
     text-decoration: none;
     font-weight: 400;
@@ -259,4 +258,11 @@ input[type=text]:placeholder {
 
 #icon {
     width:60%;
+}
+.text-center{
+    padding-top: 15px;
+    margin-top: 25px;
+    border: #CECECE solid 1px;
+    padding-bottom: 20px;
+    background: white;
 }

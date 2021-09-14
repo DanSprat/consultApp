@@ -4,10 +4,10 @@
 <t:template>
     <jsp:attribute name="title">
         <title>Настройки</title>
-        <link href="${pageContext.request.contextPath}/css/edit.css" rel="stylesheet" id="login-css">
+      <style><%@include file="/css/edit.css"%></style>
     </jsp:attribute>
     <jsp:body>
-        <p class="h5">
+        <p class="h1 ml-5 text-secondary">
             Настройки: добавление
         </p>
 

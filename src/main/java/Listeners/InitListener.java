@@ -58,7 +58,10 @@ public class InitListener implements ServletContextListener {
                     }
                     for (var elem:scheduleList){
                         try {
-                            int plusDays = (currentZDT.getDayOfWeek().getValue() - elem.day_of_week) % 7;
+                            int plusDays = (elem.day_of_week - currentZDT.getDayOfWeek().getValue()) % 7;
+                            if (plusDays < 0 ){
+                                plusDays +=7;
+                            }
                             long plusMillis = plusDays * 24 * 60 * 60 * 1000 + elem.start;
                             INSTANCE.consultations.put(new DataBase.Consultations.Consultation(elem.mentor,currentMillis + plusMillis,elem.duration,null,""));
                         } catch (IOException exception) {
@@ -73,6 +76,7 @@ public class InitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        System.out.println(ZonedDateTime.now(ZoneId.systemDefault()));
         ThreadInit.getInstance().start();
     }
 

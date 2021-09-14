@@ -30,6 +30,7 @@ DB\DataBase$Consultations$Consultation.class
 Servlets\Consults\MentorsServlet.class
 Servlets\User\UserViewServlet.class
 date\DateFormat.class
+Servlets\LogOutServlet.class
 DB\DataBase$Users.class
 Filters\ConsultationListParamsCheck.class
 OutputClasses\InfoConsult.class

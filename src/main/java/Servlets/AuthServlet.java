@@ -26,6 +26,7 @@ public class AuthServlet extends HttpServlet {
             req.getRequestDispatcher("error-page.jsp").forward(req,resp);
             return;
         }
+
         session.setAttribute("login",login);
         session.setAttribute("name",user.name);
         session.setAttribute("is_mentor",user.is_mentor);

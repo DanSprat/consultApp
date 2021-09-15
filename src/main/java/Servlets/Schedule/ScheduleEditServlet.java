@@ -35,7 +35,7 @@ public class ScheduleEditServlet  extends HttpServlet {
         }
         DateFormat dateFormat = new DateFormat();
         dateFormat.setDate(value.start);
-        req.setAttribute("time",dateFormat.getTime());
+        req.setAttribute("time",dateFormat.getLocaleTime());
         req.setAttribute("schedule",value);
         req.setAttribute("duration",value.duration / 1000 / 60);
         req.getRequestDispatcher("/schedule-edit.jsp").forward(req,resp);

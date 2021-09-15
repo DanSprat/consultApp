@@ -22,15 +22,23 @@ public class MyConsultsServlet extends HttpServlet {
         String login =(String) req.getSession().getAttribute("login");
         String mentor = req.getParameter("mentor");
         String startString = req.getParameter("start");
+        DataBase.Users.User user = DataBase.INSTANCE.users.findKey(login);
         if (mentor !=null && startString!= null ){
             DataBase.Consultations.Consultation consultation = DataBase.INSTANCE.consultations.findKey(new DataBase.Consultations.Key(mentor,Long.parseLong(startString)));
-            if (consultation!= null && login.equals(consultation.student)){
+            String person;
+            if (user.is_mentor){
+                person = consultation.mentor;
+            } else {
+                person = consultation.student;
+            }
+            if (consultation!= null && login.equals(person)){
                 req.setAttribute("mentor_login",mentor);
                 req.setAttribute("start",consultation.start);
                 req.setAttribute("mentor",DataBase.INSTANCE.users.findKey(mentor).name);
                 req.setAttribute("student",DataBase.INSTANCE.users.findKey(consultation.student).name);
                 req.setAttribute("duration",(consultation.duration / 1000 / 60)+" минут");
                 req.setAttribute("datetime",new SiteDate(consultation.start));
+                req.setAttribute("comment",consultation.comment);
                 req.getRequestDispatcher("/consultation-view.jsp").forward(req,resp);
             } else {
                 req.setAttribute("message", "Консультация не найдена");
@@ -40,7 +48,6 @@ public class MyConsultsServlet extends HttpServlet {
                 return;
             }
         } else {
-            DataBase.Users.User user = DataBase.INSTANCE.users.findKey(login);
             List<DataBase.Consultations.Consultation> consultations;
             if (user.is_mentor){
                 consultations = DataBase.INSTANCE.consultations.select((o)->(o.mentor.equals(login) && o.student!=null), Comparator.comparing(o->o.start));

@@ -25,7 +25,7 @@
                             <option value="3" <c:if test="${schedule.day_of_week == 3}">selected="selected"</c:if>>Среда</option>
                             <option value="4"<c:if test="${schedule.day_of_week == 4}">selected="selected"</c:if>>Четверг</option>
                             <option value="5" <c:if test="${schedule.day_of_week == 5}">selected="selected"</c:if>>Пятница</option>
-                            <option value="6"<c:if test="${schedule.day_of_week == 6}">selected="selected"</c:if>>Пятница</option>
+                            <option value="6"<c:if test="${schedule.day_of_week == 6}">selected="selected"</c:if>>Суббота</option>
                             <option value="0"<c:if test="${schedule.day_of_week == 0}">selected="selected"</c:if>>Воскресенье</option>
                         </select>
                     </div>

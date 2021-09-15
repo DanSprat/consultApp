@@ -34,6 +34,7 @@ public class ScheduleAddServlet extends HttpServlet {
         }
         DataBase.Settings.Record record = DataBase.INSTANCE.settings.findKey("CONSULT_DURATION");
         if (record != null){
+            System.out.println(record.value);
             req.setAttribute("duration",Integer.parseInt(record.value) / 1000 / 60 );
         }
         req.getRequestDispatcher("/schedule-add.jsp").forward(req,resp);

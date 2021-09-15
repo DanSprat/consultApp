@@ -10,8 +10,8 @@ import java.util.Objects;
 public enum DataBase {
     INSTANCE;
 
-    public final static String DB_PATH = "/home/popovdaniil2000/consult_db/";
-    //public final static String DB_PATH = "F:/consult_db/";
+    //public final static String DB_PATH = "/home/popovdaniil2000/consult_db/";
+    public final static String DB_PATH = "F:/consult_db/";
 
     public Users users = new Users();
     public Consultations consultations = new Consultations();

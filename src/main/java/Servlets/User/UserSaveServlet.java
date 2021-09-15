@@ -57,8 +57,8 @@ public class UserSaveServlet extends HttpServlet {
 
                 Part filePart = req.getPart("file"); // Retrieves <input type="file" name="file">
                 String image = user.image;
-                if (filePart != null){
-                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                if (fileName !=null && fileName.length() > 0){
                     InputStream fileContent = filePart.getInputStream();
                     Path path = Paths.get(properties.getProperty("HOME")).resolve(user.login);
                     Files.createDirectories(path);
@@ -92,7 +92,7 @@ public class UserSaveServlet extends HttpServlet {
                 }
                 String password =  req.getParameter("password");
                 String samePassword = req.getParameter("samePassword");
-                if (password.equals(samePassword)){
+                if (!password.equals(samePassword)){
                     req.setAttribute("message", "Пароли не совпадают");
                     req.setAttribute("action","/");
                     req.setAttribute("name_button","На главную");

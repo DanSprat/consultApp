@@ -12,7 +12,7 @@
             Информация о консультации
         </p>
         <div class="consultation-select-container">
-            <form method="post" onsubmit= "return confirm('Вы дейтсвительно хотите отменить запись?');" action="/consults/cancel">
+            <form method="post" onsubmit= "return confirm('Вы дейтвительно хотите отменить запись?');" action="/consults/cancel">
                 <div class="row">
                     <div class="form-group col-2">
                         <label for="mentor">Наставник</label>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group comment ">
                     <label for="comment">Комментарий</label>
-                    <textarea name="comment" class="form-control" id="comment"  disabled></textarea>
+                    <textarea name="comment" class="form-control" id="comment" placeholder="${comment}"  disabled></textarea>
                 </div>
                 <input type="text" name ="mentor_login" value="${mentor_login}" hidden>
                 <input type="text" name ="start" value="${start}" hidden>

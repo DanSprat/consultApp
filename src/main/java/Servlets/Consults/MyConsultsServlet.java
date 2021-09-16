@@ -2,6 +2,7 @@ package Servlets.Consults;
 
 import DB.DataBase;
 import OutputClasses.InfoConsult;
+import date.DateFormat;
 import date.SiteDate;
 
 import javax.servlet.ServletException;
@@ -37,7 +38,9 @@ public class MyConsultsServlet extends HttpServlet {
                 req.setAttribute("mentor",DataBase.INSTANCE.users.findKey(mentor).name);
                 req.setAttribute("student",DataBase.INSTANCE.users.findKey(consultation.student).name);
                 req.setAttribute("duration",(consultation.duration / 1000 / 60)+" минут");
-                req.setAttribute("datetime",new SiteDate(consultation.start));
+                DateFormat dateFormat = new DateFormat();
+                dateFormat.setDate(consultation.start);
+                req.setAttribute("datetime",new SiteDate(consultation.start)+" "+ dateFormat.getTime());
                 req.setAttribute("comment",consultation.comment);
                 req.getRequestDispatcher("/consultation-view.jsp").forward(req,resp);
             } else {

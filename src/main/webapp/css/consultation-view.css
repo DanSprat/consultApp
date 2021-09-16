@@ -12,3 +12,6 @@ label{
 .comment{
     margin-top: 15px;
 }
+.col-2 {
+    min-width: 300px;
+}
